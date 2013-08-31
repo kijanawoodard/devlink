@@ -23,6 +23,14 @@
             "linkedin" : "http://www.linkedin.com/pub/mohamed-elmalky/23/907/b17",
             "github": "https://github.com/malky211",
             "voucher" : "kijana.woodard"
-        }        
+        },
+        {
+            "name": "Jonathan Keith",
+            "username" : "jonathan.keith",
+            "email" : "jonkeith@gmail.com",
+            "linkedin" : "http://www.linkedin.com/in/jonathanrkeith",
+            "github": "https://github.com/joncse",
+            "voucher" : "kijana.woodard"
+        }      
     ]
 }
