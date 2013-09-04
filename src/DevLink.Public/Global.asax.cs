@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
+using Autofac.Integration.Mvc;
 
 namespace DevLink.Public
 {
@@ -17,6 +18,9 @@ namespace DevLink.Public
 	{
 		protected void Application_Start()
 		{
+			var container = BuildContainer();
+			DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
 			ViewEngines.Engines.Clear();
 			ViewEngines.Engines.Add(new FeatureViewEngine());
 
@@ -27,6 +31,16 @@ namespace DevLink.Public
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			AuthConfig.RegisterAuth();
+		}
+
+		private IContainer BuildContainer()
+		{
+			var builder = new ContainerBuilder();
+			builder.RegisterControllers(typeof(MvcApplication).Assembly);
+
+
+
+			return builder.Build();
 		}
 	}
 
