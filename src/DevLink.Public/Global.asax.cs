@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Raven.Client;
+using Raven.Client.Document;
 
 namespace DevLink.Public
 {
@@ -38,7 +40,18 @@ namespace DevLink.Public
 			var builder = new ContainerBuilder();
 			builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
+			builder.Register(x =>
+			{
+				var store = new DocumentStore {ConnectionStringName = "RavenDB"};
+				store.Initialize();
+				return store;
+			})
+			       .As<IDocumentStore>()
+			       .SingleInstance();
 
+			builder.Register(x => x.Resolve<IDocumentStore>().OpenSession())
+			       .As<IDocumentSession>()
+			       .InstancePerLifetimeScope();
 
 			return builder.Build();
 		}

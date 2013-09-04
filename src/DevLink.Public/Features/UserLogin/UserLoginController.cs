@@ -2,12 +2,20 @@
 using System.Web.Mvc;
 using System.Web.Security;
 using AttributeRouting.Web.Mvc;
+using Raven.Client;
 
 namespace DevLink.Public.Features.UserLogin
 {
     public class UserLoginController : Controller
     {
-		[AllowAnonymous]
+	    private readonly IDocumentSession _session;
+
+	    public UserLoginController(IDocumentSession session)
+	    {
+		    _session = session;
+	    }
+
+	    [AllowAnonymous]
 		[GET("login")]
         public ActionResult Get()
         {
@@ -36,7 +44,7 @@ namespace DevLink.Public.Features.UserLogin
 			}
 		}
     }
-
+	
 	public class LoginUserCommand
 	{
 		public string UserName { get; set; }
