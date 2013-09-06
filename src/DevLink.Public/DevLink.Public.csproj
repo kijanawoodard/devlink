@@ -211,6 +211,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Compile Include="Features\Init\InitController.cs" />
     <Compile Include="Features\Rules\RulesController.cs" />
     <Compile Include="Features\UserLogin\UserLoginController.cs" />
     <Compile Include="Features\UserLogout\UserLogoutController.cs" />
@@ -219,6 +220,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Identifier.cs" />
+    <Compile Include="Models\Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +289,7 @@
     <Content Include="Features\_Layout.cshtml" />
     <Content Include="Features\UserLogin\Get.cshtml" />
     <Content Include="Features\_Public.cshtml" />
+    <Content Include="Features\Init\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
