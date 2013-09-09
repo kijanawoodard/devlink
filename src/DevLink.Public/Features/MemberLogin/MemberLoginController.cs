@@ -32,14 +32,17 @@ namespace DevLink.Public.Features.MemberLogin
 			try
 			{
 				var member = _members.FindMemberByUserName(command.UserName);
-				FormsAuthentication.SetAuthCookie(member.Id, true);
-				return RedirectToLocal(command.ReturnUrl);		
+				var ok = member.VerifyPassword(command.Password);
+				if (ok)
+				{
+					FormsAuthentication.SetAuthCookie(member.Id, true);
+					return RedirectToLocal(command.ReturnUrl);			
+				}
 			}
-			catch (Exception)
-			{
-				ModelState.AddModelError("", "Could not login.");
-				return View("Get", command);
-			}
+			catch (ApplicationException) { }
+
+			ModelState.AddModelError("", "Could not login.");
+			return View("Get", command);
 		}
 
 		protected ActionResult RedirectToLocal(string returnUrl)
