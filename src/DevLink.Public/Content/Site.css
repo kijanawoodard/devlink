@@ -176,7 +176,7 @@ footer {
         list-style: none;
     }
 
-
+#login .greeting { text-transform: lowercase; }
 /* menu
 ----------------------------------------------------------*/
 ul#menu {
