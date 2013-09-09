@@ -34,7 +34,6 @@ namespace DevLink.Public.Models
 				throw new ApplicationException("Expected valid member");
 
 			return member;
-
 		}
 	}
 }

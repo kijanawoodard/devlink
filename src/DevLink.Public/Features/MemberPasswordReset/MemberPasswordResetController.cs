@@ -39,7 +39,7 @@ namespace DevLink.Public.Features.MemberPasswordReset
 				_session.SaveChanges();
 
 				FormsAuthentication.SetAuthCookie(member.Id, true);
-				return RedirectToAction("Index", "Rules");
+				return RedirectToAction("Index", "Welcome");
 			}
 			catch (Exception)
 			{

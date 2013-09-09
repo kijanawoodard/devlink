@@ -213,7 +213,7 @@
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Init\InitController.cs" />
     <Compile Include="Features\MemberPasswordReset\MemberPasswordResetController.cs" />
-    <Compile Include="Features\Rules\RulesController.cs" />
+    <Compile Include="Features\Welcome\WelcomeController.cs" />
     <Compile Include="Features\MemberLogin\MemberLoginController.cs" />
     <Compile Include="Features\MemberLogout\MemberLogoutController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -287,7 +287,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Features\Rules\Index.cshtml" />
+    <Content Include="Features\Welcome\Index.cshtml" />
     <Content Include="Features\Web.config" />
     <Content Include="Features\Home\Index.cshtml" />
     <Content Include="Features\_ViewStart.cshtml" />

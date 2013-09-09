@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace DevLink.Public.Features.Rules
 {
-    public class RulesController : Controller
+    public class WelcomeController : Controller
     {
         public ActionResult Index()
         {
