@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using Raven.Client;
 
 namespace DevLink.Public.Models
@@ -7,15 +8,18 @@ namespace DevLink.Public.Models
 	{
 		Member FindMemberByUserName(string username);
 		Member FindMemberById(string id);
+		Member FindLoggedInMember();
 	}
 
 	public class RavenMemberLookup : IFindMembers
 	{
 		private readonly IDocumentSession _session;
+		private readonly ILoggedInMember _loggedInMember;
 
-		public RavenMemberLookup(IDocumentSession session)
+		public RavenMemberLookup(IDocumentSession session, ILoggedInMember loggedInMember)
 		{
 			_session = session;
+			_loggedInMember = loggedInMember;
 		}
 
 		//TODO: Move this logic to an injectable component
@@ -46,5 +50,20 @@ namespace DevLink.Public.Models
 
 			return member;
 		}
+
+		public Member FindLoggedInMember()
+		{
+			return FindMemberById(_loggedInMember.Id);
+		}
+	}
+
+	public interface ILoggedInMember
+	{
+		string Id { get; }
+	}
+
+	public class HttpIdentity : ILoggedInMember
+	{
+		public string Id { get { return HttpContext.Current.User.Identity.Name; } }
 	}
 }

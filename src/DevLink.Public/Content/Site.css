@@ -61,8 +61,9 @@ mark {
 h1, h2, h3,
 h4, h5, h6 {
     color: #000;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    margin: 0 0 20px;
+    padding: 0;
+	font-weight: normal;
 }
 
 h1 {
@@ -70,7 +71,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.75em;
+    font-size: 1em;
 }
 
 h3 {
@@ -416,8 +417,9 @@ fieldset {
 
 label {
     display: block;
-    font-size: 1.2em;
-    font-weight: 600;
+    font-size: 1em;
+    font-weight: normal;
+	text-transform: lowercase;
 }
 
 label.checkbox {
@@ -428,8 +430,8 @@ input, textarea {
     border: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
-    font-size: 1.2em;
-    margin: 5px 0 6px 0;
+    font-size: 1em;
+    margin: 5px 0 10px 0;
     padding: 5px;
     width: 300px;
 }
@@ -437,6 +439,7 @@ input, textarea {
 textarea {
     font-family: inherit;
     width: 500px;
+	height: 135px;
 }
 
     input:focus, textarea:focus {
@@ -455,11 +458,13 @@ textarea {
         background-color: #d3dce0;
         border: 1px solid #787878;
         cursor: pointer;
-        font-size: 1.2em;
-        font-weight: 600;
+        font-size: 1em;
+        font-weight: normal;
         padding: 7px;
         margin-right: 8px;
         width: auto;
+	    text-transform: lowercase;
+	    display: block;
     }
 
     td input[type="submit"],

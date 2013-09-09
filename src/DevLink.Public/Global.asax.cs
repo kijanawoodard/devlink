@@ -54,7 +54,11 @@ namespace DevLink.Public
 			       .As<IDocumentSession>()
 			       .InstancePerLifetimeScope();
 
-			builder.Register(x => new RavenMemberLookup(x.Resolve<IDocumentSession>()))
+			builder.Register(c => new HttpIdentity())
+			       .As<ILoggedInMember>()
+			       .InstancePerLifetimeScope();
+
+			builder.Register(x => new RavenMemberLookup(x.Resolve<IDocumentSession>(), x.Resolve<ILoggedInMember>()))
 			       .As<IFindMembers>()
 			       .InstancePerLifetimeScope();
 

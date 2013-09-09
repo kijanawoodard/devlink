@@ -66,20 +66,4 @@ namespace DevLink.Public.Models
 			PasswordResetTokenExpiration = null;
 		}
 	}
-
-	public class Invitation
-	{
-		public string FullName { get; set; }
-		public string Email { get; set; }
-		public string LinkedIn { get; set; }
-		public string GitHub { get; set; }
-		public string VouchedBy { get; set; }
-
-		public DateTimeOffset Created { get; set; }
-
-		public Invitation()
-		{
-			Created = DateTimeOffset.UtcNow;
-		}
-	}
 }

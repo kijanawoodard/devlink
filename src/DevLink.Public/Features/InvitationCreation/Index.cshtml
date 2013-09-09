@@ -1,0 +1,27 @@
+﻿@model DevLink.Public.Features.InvitationCreation.InvitationCreationController.InviteCommand
+
+@{
+    ViewBag.Title = "Invite";
+}
+
+<h2>invite someone.</h2>
+
+@using (Html.BeginForm())
+{
+    <label>Full Name</label>
+    <input type="text" name="fullname" required autofocus />
+    
+    <label>Email</label>
+    <input type="email" name="email" required />
+    
+    <label>LinkedIn</label>
+    <input type="url" name="linkedin" required />
+    
+    <label>GitHub</label>
+    <input type="url" name="github" />
+    
+    <label>Testimonial</label>
+    <textarea name="testimonial" required></textarea>
+    
+    <input type="submit" value="Submit Invitation" />
+}
