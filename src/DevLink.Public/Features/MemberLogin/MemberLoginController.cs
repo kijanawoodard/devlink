@@ -53,7 +53,7 @@ namespace DevLink.Public.Features.MemberLogin
 			}
 			else
 			{
-				return RedirectToRoute("Home");
+				return RedirectToAction("Index", "Welcome");
 			}
 		}
 
