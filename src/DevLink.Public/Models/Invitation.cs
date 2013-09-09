@@ -5,7 +5,13 @@ namespace DevLink.Public.Models
 {
 	public class Invitation
 	{
-		public string Id { get; set; }
+		public static string FormatId(string token)
+		{
+			return string.Format("invitations/{0}", token);
+		}
+
+		public string Id { get { return FormatId(Token); } }
+
 		public string FullName { get; set; }
 		public string Email { get; set; }
 		public string LinkedIn { get; set; }
@@ -16,20 +22,33 @@ namespace DevLink.Public.Models
 		public string Status { get; set; }
 		public string Token { get; set; }
 		public DateTimeOffset Created { get; set; }
+		public DateTimeOffset Accepted { get; set; }
 
 		public Invitation()
 		{
 			Token = ShortGuid.NewGuid();
 			Created = DateTimeOffset.UtcNow;
-			Status = Submitted;
+			Status = Statuses.Submitted;
 		}
 
-		private const string Submitted = "Submitted";
-		private const string Pending = "Pending";
-		private const string Approved = "Approved";
-		private const string Rejected = "Rejected"; //by group
-		private const string Offered = "Offered"; //one on one
-		private const string Accepted = "Accepted";
-		private const string Declined = "Declined"; //by invitee
+		public void Accept()
+		{
+			if (Status != Statuses.Submitted)
+				throw new ApplicationException("can't accept this invitation");
+
+			Status = Statuses.Accepted;
+			Accepted = DateTimeOffset.UtcNow;
+		}
+
+		public struct Statuses
+		{
+			public const string Submitted = "Submitted";
+			public const string Pending = "Pending";
+			public const string Approved = "Approved";
+			public const string Rejected = "Rejected"; //by group
+			public const string Offered = "Offered"; //one on one
+			public const string Accepted = "Accepted";
+			public const string Declined = "Declined"; //by invitee
+		}
 	}
 }

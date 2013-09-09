@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
 using AttributeRouting.Web.Mvc;
-using DevLink.Public.Features.MemberLogin;
 
 namespace DevLink.Public.Features.MemberLogout
 {
@@ -10,10 +9,17 @@ namespace DevLink.Public.Features.MemberLogout
 		[AllowAnonymous]
 		[POST("logout")]
 		[ValidateAntiForgeryToken]
-		public ActionResult Post(MemberLoginCommand command)
+		public ActionResult Post()
 		{
 			FormsAuthentication.SignOut();
 			return Redirect("/");
+		}
+
+		[AllowAnonymous]
+		[GET("sneakout")]
+		public ActionResult Get()
+		{
+			return Post();
 		}
 
     }

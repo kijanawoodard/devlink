@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DevLink.Public.Models;
+using Raven.Abstractions.Indexing;
 using Raven.Client;
+using Raven.Client.Indexes;
 
 namespace DevLink.Public.Features.Init
 {
@@ -20,6 +22,8 @@ namespace DevLink.Public.Features.Init
 		[AllowAnonymous]
 	    public ActionResult Index()
 	    {
+			IndexCreation.CreateIndexes(typeof(MemberIndex).Assembly, _session.Advanced.DocumentStore);
+
 		    var founder = Identifier.FromUserName("kijana.woodard", "");
 
 		    var exists = _session.Load<Identifier>(founder.Id);
@@ -51,4 +55,40 @@ namespace DevLink.Public.Features.Init
         }
 
     }
+
+	public class InvitationIndex : AbstractIndexCreationTask<Invitation>
+	{
+		public InvitationIndex()
+		{
+			Map = invitations => from invitation in invitations
+			                     select new
+			                     {
+				                     invitation.FullName,
+				                     invitation.Email,
+				                     invitation.VouchedBy,
+									 invitation.Token,
+				                     invitation.Status,
+									 invitation.Created
+			                     };
+
+			Index(x => x.FullName, FieldIndexing.Analyzed);
+		}
+	}
+
+	public class MemberIndex : AbstractIndexCreationTask<Member>
+	{
+		public MemberIndex()
+		{
+			Map = members => from member in members
+			                     select new
+			                     {
+									 member.FullName,
+									 member.Email,
+									 member.VouchedBy,
+									 member.Created
+			                     };
+
+			Index(x => x.FullName, FieldIndexing.Analyzed);
+		}
+	}
 }
