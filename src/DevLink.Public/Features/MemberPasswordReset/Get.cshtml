@@ -1,0 +1,29 @@
+﻿@model DevLink.Public.Features.MemberPasswordReset.MemberPasswordResetCommand
+
+@{
+    ViewBag.Title = "password reset";
+    Layout = "~/Features/_Public.cshtml"; 
+}
+
+@if (ViewData.ModelState.IsValid)
+{
+    <span>reset your password.</span>
+}
+else
+{
+    <span>ummmmmm. you may want to reset your password again.</span>
+}
+
+<br/><br/>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <label>u:</label>
+    <label>@Model.UserName</label>
+    
+    <label>p:</label>
+    <input type="password" name="password" autofocus required />
+    
+    <input type="submit" value="enter" />
+}

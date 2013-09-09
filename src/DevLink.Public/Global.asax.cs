@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
+using DevLink.Public.Models;
 using Raven.Client;
 using Raven.Client.Document;
 
@@ -51,6 +52,10 @@ namespace DevLink.Public
 
 			builder.Register(x => x.Resolve<IDocumentStore>().OpenSession())
 			       .As<IDocumentSession>()
+			       .InstancePerLifetimeScope();
+
+			builder.Register(x => new RavenMemberLookup(x.Resolve<IDocumentSession>()))
+			       .As<IFindMembers>()
 			       .InstancePerLifetimeScope();
 
 			return builder.Build();

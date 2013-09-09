@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using DevLink.Public.Infrastructure.Crypto;
 
 namespace DevLink.Public.Models
 {
-	public class Member
+	public partial class Member
 	{
 		public string Id { get; set; }
 		public string FullName { get; set; }
@@ -11,12 +13,57 @@ namespace DevLink.Public.Models
 		public string LinkedIn { get; set; }
 		public string GitHub { get; set; }
 		public string VouchedBy { get; set; }
+		
+		public HashSet<string> Identifiers { get; set; }
 
 		public DateTimeOffset Created { get; set; }
-
+		
 		public Member()
 		{
 			Created = DateTimeOffset.UtcNow;
+			Identifiers = new HashSet<string>();
+		}
+
+		public void AddIdentifier(string identifier)
+		{
+			Identifiers.Add(identifier);
+		}
+	}
+
+	public partial class Member
+	{
+		public string Password { get; set; }
+		public string PasswordResetToken { get; set; }
+		public DateTimeOffset? PasswordResetTokenExpiration { get; set; }
+
+		public void SetPassword(string password)
+		{
+			Password = CryptoHelper.HashPassword(password);
+		}
+
+		public bool VerifyPassword(string password)
+		{
+			return CryptoHelper.VerifyHashedPassword(Password, password);
+		}
+
+		public void ForgotPassword()
+		{
+			Password = null;
+			PasswordResetToken = ShortGuid.NewGuid();
+			PasswordResetTokenExpiration = DateTimeOffset.UtcNow.AddMinutes(15);
+		}
+
+		public void ResetPassword(string password, string token)
+		{
+			if (PasswordResetToken != token)
+				throw new ApplicationException("password reset tokens don't match");
+
+			if (PasswordResetTokenExpiration == null || DateTimeOffset.UtcNow > PasswordResetTokenExpiration)
+				throw new ApplicationException("paswword reset token expired");
+
+			SetPassword(password);
+			PasswordResetToken = null;
+			PasswordResetTokenExpiration = null;
 		}
 	}
 

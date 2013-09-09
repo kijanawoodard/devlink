@@ -2,12 +2,17 @@
 {
 	public class Identifier
 	{
-		public string Format(string provider, string identifier)
+		public static string FormatIdFromUserName(string identifier)
+		{
+			return FormatId(UserName, identifier);
+		}
+
+		public static string FormatId(string provider, string identifier)
 		{
 			return string.Format("identifiers/{0}/{1}", provider, identifier);
 		}
 
-		public string Id { get { return Format(Provider, ProviderUserId); } }
+		public string Id { get { return FormatId(Provider, ProviderUserId); } }
 		public string MemberId { get; set; }
 		public string Provider { get; set; }
 		public string ProviderDisplayName { get; set; }
@@ -35,7 +40,7 @@
 			};
 		}
 
-		public static string UserName = "username";
-		public static string Email = "email";
+		private const string UserName = "username";
+		private const string Email = "email";
 	}
 }

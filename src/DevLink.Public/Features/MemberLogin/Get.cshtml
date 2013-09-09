@@ -1,0 +1,29 @@
+﻿@model DevLink.Public.Features.MemberLogin.MemberLoginCommand
+@{
+    ViewBag.Title = "login";
+    Layout = "~/Features/_Public.cshtml"; 
+}
+
+@if (ViewData.ModelState.IsValid)
+{
+    <span>hello.</span>
+}
+else
+{
+    <span>ummmmmm. what?</span>
+}
+
+<br/><br/>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <label>u:</label>
+    <input type="text" name="username" required autofocus value="@Model.UserName" />
+    
+    <label>p:</label>
+    <input type="password" name="password" required />
+    
+    <input type="submit" value="enter" />
+}
+
