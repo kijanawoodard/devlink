@@ -65,6 +65,11 @@ namespace DevLink.Public.Features.InvitationCreation
 			public string LinkedIn { get; set; }
 			public string GitHub { get; set; }
 			public string Testimonial { get; set; }
+
+			public InviteCommand()
+			{
+				LinkedIn = "http://";
+			}
 		}
     }
 }
