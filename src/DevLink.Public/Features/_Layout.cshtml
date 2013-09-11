@@ -41,10 +41,12 @@
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)        							
+        <script src="~/Scripts/js-webshim/minified/polyfiller.js"></script>
         <script>
             //$.webshims.debug = true;
             $.webshims.polyfill('forms forms-ext');
         </script>
+
+        @RenderSection("scripts", required: false)        							
     </body>
 </html>
