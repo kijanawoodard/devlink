@@ -105,15 +105,11 @@ h5, h6 {
     padding-bottom: 35px;
 }
 
-    .main-content {
-        background-X: url("../Images/accent.png") no-repeat;
-        padding-left: 10px;
-        padding-top: 30px;
-    }
-
-    .featured + .main-content-X {
-        background: url("../Images/heroAccent.png") no-repeat;
-    }
+.main-content
+{
+	padding-left: 10px;
+	padding-top: 30px;
+}
 
 header .content-wrapper {
     padding-top: 2px; 
@@ -131,8 +127,6 @@ footer {
 ----------------------------------------------------------*/
 .site-title {
     color: #c8c8c8;
-    font-family: monospace, Rockwell, Consolas, "Courier New", Courier;
-    font-size: 1em;
     margin: 0;
 }
 
@@ -146,38 +140,9 @@ footer {
 
 /* login
 ----------------------------------------------------------*/
-#login {
-    display: block;
-    font-size: 1em;
-    margin: 0 0 0px;
-    text-align: right;
-}
+#login { text-transform: lowercase; }
+#login a { padding: 0; }
 
-    #login a {
-        background-color-X: #d3dce0;
-        margin-left-X: 10px;
-        margin-right-X: 3px;
-        padding-x: 2px 3px;
-        text-decoration-X: none;
-    }
-
-    #login a.username {
-        background: none;
-        margin: 0;
-        padding: 0;
-        text-decoration: underline;
-    }
-
-    #login ul {
-        margin: 0;
-    }
-
-    #login li {
-        display: inline;
-        list-style: none;
-    }
-
-#login .greeting { text-transform: lowercase; }
 /* menu
 ----------------------------------------------------------*/
 ul#menu {
@@ -188,22 +153,22 @@ ul#menu {
     text-align: right;
 }
 
-    ul#menu li {
-        display: inline;
-        list-style: none;
-        padding-left: 15px;
-    }
+ul#menu li {
+	display: inline;
+	list-style: none;
+	padding-left: 15px;
+}
 
-        ul#menu li a {
-            background: none;
-            color: #999;
-            text-decoration: none;
-        }
+ul#menu li a {
+	background: none;
+	color: #999;
+	text-decoration: none;
+}
 
-        ul#menu li a:hover {
-            color: #333;
-            text-decoration: none;
-        }
+ul#menu li a:hover {
+	color: #333;
+	text-decoration: none;
+}
 
 
 /* page elements
