@@ -589,7 +589,6 @@
     <Content Include="Scripts\js-webshim\minified\shims\FlashCanvasPro\save.php" />
     <Content Include="Scripts\js-webshim\minified\shims\FlashCanvas\proxy.php" />
     <Content Include="Scripts\js-webshim\minified\shims\FlashCanvas\save.php" />
-    <Content Include="Scripts\js-webshim\minified\shims\jpicker\images\Thumbs.db" />
     <Content Include="Scripts\js-webshim\minified\shims\styles\config.rb" />
     <Content Include="Scripts\js-webshim\minified\shims\styles\scss\shim.scss" />
   </ItemGroup>
