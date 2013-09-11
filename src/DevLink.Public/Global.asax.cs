@@ -79,6 +79,12 @@ namespace DevLink.Public
 				"~/Features/{1}/{0}.cshtml",
 				"~/Views/{1}/{0}.cshtml"
 			};
+
+			PartialViewLocationFormats = new[]
+			{
+				"~/Features/{0}.cshtml",
+				"~/Features/Shared/{0}.cshtml"
+			};
 		}
 		private static IEnumerable<string> GetPath(ControllerContext controllerContext, string viewName)
 		{
