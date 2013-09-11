@@ -20,13 +20,14 @@ namespace DevLink.Public.Models
 		public string VouchedBy { get; set; }
 		
 		public HashSet<string> Identifiers { get; set; }
-
+		
 		public DateTimeOffset Created { get; set; }
 		
 		public Member()
 		{
 			Created = DateTimeOffset.UtcNow;
 			Identifiers = new HashSet<string>();
+			Invitations = new List<string>();
 		}
 
 		public void AddIdentifier(string identifier)
@@ -69,6 +70,21 @@ namespace DevLink.Public.Models
 			SetPassword(password);
 			PasswordResetToken = null;
 			PasswordResetTokenExpiration = null;
+		}
+	}
+
+	public partial class Member
+	{
+		public List<string> Invitations { get; set; }
+
+		public void AddInvite(string invitationId)
+		{
+			Invitations.Add(invitationId);
+		}
+
+		public void RemoveInvite(string invitationId)
+		{
+			Invitations.Remove(invitationId);
 		}
 	}
 }

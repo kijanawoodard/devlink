@@ -47,6 +47,9 @@ namespace DevLink.Public.Features.InvitationCreation
 				invite.VouchedBy = loggedInMember.Id;
 
 				_session.Store(invite);
+
+				loggedInMember.AddInvite(invite.Id);
+
 				_session.SaveChanges();
 
 				SendInvitationToGroup(invite, loggedInMember.UserName);
