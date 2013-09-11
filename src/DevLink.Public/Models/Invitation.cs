@@ -31,6 +31,14 @@ namespace DevLink.Public.Models
 			Status = Statuses.Submitted;
 		}
 
+		public void Pending()
+		{
+			if (Status != Statuses.Submitted)
+				throw new ApplicationException("can't set this invitation to pending");
+
+			Status = Statuses.Pending;
+		}
+
 		public void Accept()
 		{
 			if (Status != Statuses.Submitted)

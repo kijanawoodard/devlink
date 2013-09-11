@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -54,6 +55,10 @@ namespace DevLink.Public
 			       .As<IDocumentSession>()
 			       .InstancePerLifetimeScope();
 
+			builder.Register(x => new ConfigurationManagerBasedWebConfiguration())
+			       .As<IAppConfiguration>()
+			       .SingleInstance();
+
 			builder.Register(c => new HttpIdentity())
 			       .As<ILoggedInMember>()
 			       .InstancePerLifetimeScope();
@@ -64,6 +69,20 @@ namespace DevLink.Public
 
 			return builder.Build();
 		}
+	}
+
+	public class ConfigurationManagerBasedWebConfiguration : IAppConfiguration
+	{
+		public string GoogleAnalyticsId { get { return ConfigurationManager.AppSettings["google.analytics.id"]; } }
+		public string GoogleAnalyticsDomain { get { return ConfigurationManager.AppSettings["google.analytics.domain"]; } }
+		public string MadrillApiKey { get { return ConfigurationManager.AppSettings["mandrill.apikey"]; } }
+		public string MadrillOriginTarget { get { return ConfigurationManager.AppSettings["mandrill.orgin.target"]; } }
+	}
+
+	public interface IAppConfiguration
+	{
+		string MadrillApiKey { get; }
+		string MadrillOriginTarget { get; }
 	}
 
 	public class FeatureViewEngine : RazorViewEngine
