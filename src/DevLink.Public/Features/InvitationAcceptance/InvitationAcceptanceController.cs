@@ -38,8 +38,14 @@ namespace DevLink.Public.Features.InvitationAcceptance
 		{
 			try
 			{
-				var invitation = _session.Load<Invitation>(Invitation.FormatId(command.Token));
+				var invitation = _session
+									.Include<Invitation>(x => x.VouchedBy)
+									.Load<Invitation>(Invitation.FormatId(command.Token));
+
 				invitation.Accept();
+
+				var voucher = _session.Load<Member>(invitation.VouchedBy);
+				voucher.RemoveInvite(invitation.Id);
 
 				var member = new Member
 				{
@@ -87,6 +93,11 @@ namespace DevLink.Public.Features.InvitationAcceptance
 			public string UserName { get; set; }
 			public string Password { get; set; }
 			public string Token { get; set; }
+
+			public InvitationAcceptanceCommand()
+			{
+				UserNameIsAvailable = true;
+			}
 		}
     }
 }

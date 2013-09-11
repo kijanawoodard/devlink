@@ -41,7 +41,7 @@ namespace DevLink.Public.Models
 
 		public void Accept()
 		{
-			if (Status != Statuses.Submitted)
+			if (Status != Statuses.Pending)
 				throw new ApplicationException("can't accept this invitation");
 
 			Status = Statuses.Accepted;
