@@ -1,0 +1,8 @@
+﻿@media only screen and (max-width: 320px)
+{
+	#login label, #login input[type="submit"] {
+		display: block;
+	}
+
+	#login input { margin-bottom: 1em; }
+}

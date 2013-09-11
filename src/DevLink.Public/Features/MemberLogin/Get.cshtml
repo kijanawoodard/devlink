@@ -13,8 +13,7 @@ else
     <h2>ummmmmm. what?</h2>
 }
 
-@using (Html.BeginForm())
-{
+<form action="@Request.RawUrl" method="post" id="login">
     @Html.AntiForgeryToken()
     
     <label>u:</label>
@@ -24,5 +23,5 @@ else
     <input type="password" name="password" required />
     
     <input type="submit" value="enter" />
-}
+</form>
 
