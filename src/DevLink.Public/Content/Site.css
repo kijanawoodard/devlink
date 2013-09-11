@@ -398,12 +398,12 @@ input, textarea {
     font-size: 1em;
     margin: 5px 0 10px 0;
     padding: 5px;
-    width: 300px;
+    width: 400px;
 }
 
 textarea {
     font-family: inherit;
-    width: 500px;
+    width: 400px;
 	height: 135px;
 }
 
@@ -689,7 +689,7 @@ tr.pager td {
         }
 
     /* forms */
-    input {
+    input, textarea {
         width: 90%;
     }
 
