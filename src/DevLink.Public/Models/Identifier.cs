@@ -6,6 +6,11 @@
 		{
 			return FormatId(UserName, identifier);
 		}
+		
+		public static string FormatIdFromEmail(string identifier)
+		{
+			return FormatId(Email, identifier);
+		}
 
 		public static string FormatId(string provider, string identifier)
 		{

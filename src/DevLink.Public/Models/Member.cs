@@ -6,7 +6,12 @@ namespace DevLink.Public.Models
 {
 	public partial class Member
 	{
-		public string Id { get; set; }
+		public static string FormatId(string username)
+		{
+			return string.Format("members/{0}", username);
+		}
+
+		public string Id { get { return FormatId(UserName); } }
 		public string FullName { get; set; }
 		public string UserName { get; set; }
 		public string Email { get; set; }

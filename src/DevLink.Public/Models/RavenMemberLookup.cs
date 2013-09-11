@@ -22,13 +22,16 @@ namespace DevLink.Public.Models
 			_loggedInMember = loggedInMember;
 		}
 
-		//TODO: Move this logic to an injectable component
-		//TODO: Load the current user by default for every request scope
 		public Member FindMemberByUserName(string username)
+		{
+			return FindMemberById(Member.FormatId(username));
+		}
+
+		public Member FindMemberByEmail(string email)
 		{
 			var identifier = _session
 				.Include<Identifier>(x => x.MemberId)
-				.Load<Identifier>(Identifier.FormatIdFromUserName(username));
+				.Load<Identifier>(Identifier.FormatIdFromEmail(email));
 
 			if (identifier == null)
 				throw new ApplicationException("Expected valid identifier");

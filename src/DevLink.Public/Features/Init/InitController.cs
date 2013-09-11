@@ -23,13 +23,11 @@ namespace DevLink.Public.Features.Init
 	    public ActionResult Index()
 	    {
 			IndexCreation.CreateIndexes(typeof(MemberIndex).Assembly, _session.Advanced.DocumentStore);
-
-		    var founder = Identifier.FromUserName("kijana.woodard", "");
-
-		    var exists = _session.Load<Identifier>(founder.Id);
+			
+		    var exists = _session.Load<Member>(Member.FormatId("kijana.woodard"));
 			if (exists == null)
 			{
-				var member = new Member
+				var founder = new Member
 				{
 					Email = "devlink@wyldeye.com",
 					FullName = "Kijana Woodard",
@@ -38,22 +36,21 @@ namespace DevLink.Public.Features.Init
 					GitHub = "https://github.com/kijanawoodard"
 				};
 
-				_session.Store(member);
-
-				var email = Identifier.FromEmail("devlink@wyldeye.com", member.Id);
-				member.AddIdentifier(email.Id);
-				_session.Store(email);
-				
-				founder.MemberId = member.Id;
-				member.AddIdentifier(founder.Id);
 				_session.Store(founder);
+
+				var email = Identifier.FromEmail("devlink@wyldeye.com", founder.Id);
+				founder.AddIdentifier(email.Id);
+				_session.Store(email);
+
+				var username = Identifier.FromUserName("kijana.woodard", founder.Id);
+				founder.AddIdentifier(username.Id);
+				_session.Store(username);
 				
 				_session.SaveChanges();
 			}
 
             return View();
         }
-
     }
 
 	public class InvitationIndex : AbstractIndexCreationTask<Invitation>
