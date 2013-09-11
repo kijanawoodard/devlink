@@ -1,3 +1,15 @@
 ﻿body {
 	font-family: monospace, "Segoe UI", Verdana, Helvetica, Sans-Serif;
 }
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: #000;
+    margin: 0 0 20px;
+    padding: 0;
+	font-weight: normal;
+}
+
+h2 {
+    font-size: 1em;
+}

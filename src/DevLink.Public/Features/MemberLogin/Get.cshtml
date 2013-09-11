@@ -6,14 +6,13 @@
 
 @if (ViewData.ModelState.IsValid)
 {
-    <span>hello.</span>
+    <h2>hello.</h2>
 }
 else
 {
-    <span>ummmmmm. what?</span>
+    <h2>ummmmmm. what?</h2>
 }
 
-<br/><br/>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
