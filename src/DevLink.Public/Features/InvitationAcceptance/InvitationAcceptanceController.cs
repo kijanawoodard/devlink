@@ -53,7 +53,8 @@ namespace DevLink.Public.Features.InvitationAcceptance
 					FullName = invitation.FullName,
 					UserName = command.UserName,
 					LinkedIn = invitation.LinkedIn,
-					GitHub = invitation.GitHub
+					GitHub = invitation.GitHub,
+					VouchedBy = voucher.Id
 				};
 
 				member.SetPassword(command.Password);
