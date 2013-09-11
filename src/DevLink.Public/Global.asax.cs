@@ -104,6 +104,11 @@ namespace DevLink.Public
 				"~/Features/{0}.cshtml",
 				"~/Features/Shared/{0}.cshtml"
 			};
+
+			MasterLocationFormats = new[]
+			{
+				"~/Features/{0}.cshtml"
+			};
 		}
 		private static IEnumerable<string> GetPath(ControllerContext controllerContext, string viewName)
 		{
