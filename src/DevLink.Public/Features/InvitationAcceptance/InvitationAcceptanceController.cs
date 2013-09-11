@@ -68,7 +68,7 @@ namespace DevLink.Public.Features.InvitationAcceptance
 				FormsAuthentication.SetAuthCookie(member.Id, true);
 				return RedirectToAction("Index", "Welcome");
 			}
-			catch (ConcurrencyException e)
+			catch (ConcurrencyException)
 			{
 				command.UserNameIsAvailable = false;
 			}
