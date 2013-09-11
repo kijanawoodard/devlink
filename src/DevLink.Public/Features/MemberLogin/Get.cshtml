@@ -1,7 +1,8 @@
 ﻿@model DevLink.Public.Features.MemberLogin.MemberLoginCommand
 @{
+    Layout = "~/Features/_Public.cshtml";
     ViewBag.Title = "login";
-    Layout = "~/Features/_Public.cshtml"; 
+    ViewBag.Css = "login";
 }
 
 @if (ViewData.ModelState.IsValid)
@@ -13,7 +14,7 @@ else
     <h2>ummmmmm. what?</h2>
 }
 
-<form action="@Request.RawUrl" method="post" id="login">
+<form action="@Request.RawUrl" method="post">
     @Html.AntiForgeryToken()
     
     <label>u:</label>
