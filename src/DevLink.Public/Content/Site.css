@@ -154,11 +154,11 @@ footer {
 }
 
     #login a {
-        background-color: #d3dce0;
-        margin-left: 10px;
-        margin-right: 3px;
+        background-color-X: #d3dce0;
+        margin-left-X: 10px;
+        margin-right-X: 3px;
         padding-x: 2px 3px;
-        text-decoration: none;
+        text-decoration-X: none;
     }
 
     #login a.username {
