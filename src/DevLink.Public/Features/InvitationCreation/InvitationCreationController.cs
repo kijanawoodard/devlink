@@ -60,6 +60,7 @@ namespace DevLink.Public.Features.InvitationCreation
 			}
 			catch (Exception)
 			{
+				ModelState.AddModelError("", "error");
 				return View(command);
 			}
 		}

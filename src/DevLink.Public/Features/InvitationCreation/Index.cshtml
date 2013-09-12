@@ -4,7 +4,14 @@
     ViewBag.Title = "Invite";
 }
 
-<h2>invite someone.</h2>
+@if (ViewData.ModelState.IsValid)
+{
+    <h2>invite someone.</h2>
+}
+else
+{
+    <h2>hmmmm. something went wrong. try again later.</h2>
+}
 
 @using (Html.BeginForm())
 {
