@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AttributeRouting.Web.Mvc;
+using DevLink.Public.Features.EmailCommunications;
 using DevLink.Public.Models;
-using Mandrill;
 using Raven.Client;
 
 namespace DevLink.Public.Features.InvitationCreation
@@ -14,13 +14,13 @@ namespace DevLink.Public.Features.InvitationCreation
     {
 	    private readonly IDocumentSession _session;
 	    private readonly IFindMembers _members;
-	    private readonly IAppConfiguration _configuration;
+	    private readonly IEmailNotificationService _email;
 
-	    public InvitationCreationController(IDocumentSession session, IFindMembers members, IAppConfiguration configuration)
+	    public InvitationCreationController(IDocumentSession session, IFindMembers members, IEmailNotificationService email)
 	    {
 		    _session = session;
 		    _members = members;
-		    _configuration = configuration;
+		    _email = email;
 	    }
 
 	    [GET("invite")]
@@ -52,7 +52,8 @@ namespace DevLink.Public.Features.InvitationCreation
 
 				_session.SaveChanges();
 
-				SendInvitationToGroup(invite, loggedInMember.UserName);
+				//TODO: publish event
+				_email.SendInvitationToGroup(invite, loggedInMember.UserName);
 				invite.Pending();
  				_session.SaveChanges(); //in the short run, this will give us a heads up if the mandril send is failing
 
@@ -83,31 +84,6 @@ namespace DevLink.Public.Features.InvitationCreation
 			{
 				LinkedIn = "http://";
 			}
-		}
-
-		//TODO: Move this to it's own class or a background task
-		private void SendInvitationToGroup(Invitation invitation, string vouched)
-		{
-			var api = new MandrillApi(_configuration.MadrillApiKey);
-			var result = api.SendMessage(
-				new EmailMessage()
-				{
-					to =
-						new List<EmailAddress>()
-						{
-							new EmailAddress {email = _configuration.MadrillOriginTarget}
-						},
-					subject = invitation.FullName
-				},
-				"devlink-submit-invitation",
-				new List<TemplateContent>()
-				{
-					new TemplateContent() {name = "candidate", content = invitation.FullName},
-					new TemplateContent() {name = "linkedin", content = invitation.LinkedIn},
-					new TemplateContent() {name = "github", content = invitation.GitHub},
-					new TemplateContent() {name = "vouchedby", content = vouched},
-					new TemplateContent() {name = "testimonal", content = invitation.Testimonial}
-				});
 		}
     }
 }

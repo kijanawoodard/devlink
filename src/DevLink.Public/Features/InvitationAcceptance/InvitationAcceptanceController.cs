@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Security;
 using AttributeRouting.Web.Mvc;
+using DevLink.Public.Features.EmailCommunications;
 using DevLink.Public.Models;
 using Raven.Abstractions.Exceptions;
 using Raven.Client;
@@ -12,10 +13,12 @@ namespace DevLink.Public.Features.InvitationAcceptance
     public class InvitationAcceptanceController : Controller
     {
 	    private readonly IDocumentSession _session;
+	    private readonly IEmailNotificationService _email;
 
-	    public InvitationAcceptanceController(IDocumentSession session)
+	    public InvitationAcceptanceController(IDocumentSession session, IEmailNotificationService email)
 		{
 			_session = session;
+			_email = email;
 		}
 
 	    [AllowAnonymous]
@@ -71,8 +74,11 @@ namespace DevLink.Public.Features.InvitationAcceptance
 
 				_session.Advanced.UseOptimisticConcurrency = true;
 				_session.SaveChanges();
-
+				
 				FormsAuthentication.SetAuthCookie(member.Id, true);
+
+				_email.SendAcceptanceNotificationToGroup(member);
+
 				return RedirectToAction("Index", "Welcome");
 			}
 			catch (ConcurrencyException)

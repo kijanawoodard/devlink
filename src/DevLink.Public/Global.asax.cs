@@ -9,6 +9,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
+using DevLink.Public.Features.EmailCommunications;
 using DevLink.Public.Models;
 using Raven.Client;
 using Raven.Client.Document;
@@ -65,6 +66,10 @@ namespace DevLink.Public
 
 			builder.Register(x => new RavenMemberLookup(x.Resolve<IDocumentSession>(), x.Resolve<ILoggedInMember>()))
 			       .As<IFindMembers>()
+			       .InstancePerLifetimeScope();
+
+			builder.Register(c => new MandrillEmailService(c.Resolve<IAppConfiguration>()))
+			       .As<IEmailNotificationService>()
 			       .InstancePerLifetimeScope();
 
 			return builder.Build();

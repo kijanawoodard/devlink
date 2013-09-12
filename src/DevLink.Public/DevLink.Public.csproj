@@ -217,6 +217,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Features\EmailCommunications\MandrillEmailService.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Init\InitController.cs" />
     <Compile Include="Features\InvitationAcceptance\InvitationAcceptanceController.cs" />
