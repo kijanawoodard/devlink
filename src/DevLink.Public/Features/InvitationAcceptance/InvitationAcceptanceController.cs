@@ -29,6 +29,7 @@ namespace DevLink.Public.Features.InvitationAcceptance
 		    model.Token = token;
 
 		    var invitation = _session.Load<Invitation>(Invitation.FormatId(model.Token));
+			//TODO: check valid
 		    model.UserName = invitation.FullName.Trim().Replace(" ", ".").ToLower();
 		    model.UserNameIsAvailable = !_session.Advanced.DocumentExists(Identifier.FormatIdFromUserName(model.UserName));
 
@@ -57,9 +58,9 @@ namespace DevLink.Public.Features.InvitationAcceptance
 					UserName = command.UserName,
 					LinkedIn = invitation.LinkedIn,
 					GitHub = invitation.GitHub,
-					VouchedBy = voucher.Id
 				};
 
+				member.SetLineage(voucher.Id, voucher.Lineage);
 				member.SetPassword(command.Password);
 
 				_session.Store(member);

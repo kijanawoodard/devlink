@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DevLink.Public.Infrastructure.Crypto;
 
 namespace DevLink.Public.Models
@@ -17,8 +18,9 @@ namespace DevLink.Public.Models
 		public string Email { get; set; }
 		public string LinkedIn { get; set; }
 		public string GitHub { get; set; }
-		public string VouchedBy { get; set; }
+		public string VouchedBy { get { return Lineage.LastOrDefault() ?? string.Empty; } }
 		
+		public List<string> Lineage { get; private set; } 
 		public HashSet<string> Identifiers { get; set; }
 		
 		public DateTimeOffset Created { get; set; }
@@ -28,11 +30,17 @@ namespace DevLink.Public.Models
 			Created = DateTimeOffset.UtcNow;
 			Identifiers = new HashSet<string>();
 			Invitations = new List<string>();
+			Lineage = new List<string>();
 		}
 
 		public void AddIdentifier(string identifier)
 		{
 			Identifiers.Add(identifier);
+		}
+
+		public void SetLineage(string vouchedBy, List<string> vouchedByLineage)
+		{
+			Lineage = new List<string>(vouchedByLineage) {vouchedBy};
 		}
 	}
 
