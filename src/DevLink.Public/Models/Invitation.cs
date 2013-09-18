@@ -54,7 +54,9 @@ namespace DevLink.Public.Models
 			public const string Pending = "Pending";
 			public const string Approved = "Approved";
 			public const string Rejected = "Rejected"; //by group
+			
 			public const string Offered = "Offered"; //one on one
+
 			public const string Accepted = "Accepted";
 			public const string Declined = "Declined"; //by invitee
 		}
