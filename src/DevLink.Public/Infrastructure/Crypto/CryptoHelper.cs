@@ -69,7 +69,7 @@ namespace DevLink.Public.Infrastructure.Crypto
 			return Crypto.GenerateSalt();
 		}
 
-		internal static string HashPassword(string password)
+		public static string HashPassword(string password)
 		{
 			var count = GetIterationsFromYear(GetCurrentYear());
 			var result = Crypto.HashPassword(password, count);

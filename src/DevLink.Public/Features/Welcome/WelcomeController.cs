@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace DevLink.Public.Features.Rules
+namespace DevLink.Public.Features.Welcome
 {
     public class WelcomeController : Controller
     {
@@ -12,6 +8,5 @@ namespace DevLink.Public.Features.Rules
         {
             return View();
         }
-
     }
 }

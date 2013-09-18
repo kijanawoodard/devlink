@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{88DCE0
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Devlink.Tests", "Devlink.Tests\Devlink.Tests.csproj", "{BE0E3F23-EDB1-44DD-A04F-C34E0F432D3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{1998CAE6-7F5E-4B10-A6DF-0C2D7354A7F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1998CAE6-7F5E-4B10-A6DF-0C2D7354A7F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1998CAE6-7F5E-4B10-A6DF-0C2D7354A7F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0E3F23-EDB1-44DD-A04F-C34E0F432D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0E3F23-EDB1-44DD-A04F-C34E0F432D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0E3F23-EDB1-44DD-A04F-C34E0F432D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0E3F23-EDB1-44DD-A04F-C34E0F432D3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
