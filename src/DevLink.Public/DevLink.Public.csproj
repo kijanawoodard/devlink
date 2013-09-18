@@ -94,9 +94,6 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -216,7 +213,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Features\EmailCommunications\MandrillEmailService.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Init\InitController.cs" />
@@ -226,7 +222,6 @@
     <Compile Include="Features\Welcome\WelcomeController.cs" />
     <Compile Include="Features\MemberLogin\MemberLoginController.cs" />
     <Compile Include="Features\MemberLogout\MemberLogoutController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,7 +229,6 @@
     <Compile Include="Infrastructure\Crypto\ShortGuid.cs" />
     <Compile Include="Infrastructure\Crypto\System.Web.Helpers.Crypto.cs" />
     <Compile Include="Infrastructure\Raven\DocumentExtensions.cs" />
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Identifier.cs" />
     <Compile Include="Models\Invitation.cs" />
     <Compile Include="Models\Member.cs" />
@@ -560,33 +554,9 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Content\images\bullet.png" />
     <Content Include="Features\Error.cshtml" />
     <Content Include="Features\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config" />
     <Content Include="Scripts\js-webshim\dev\shims\FlashCanvasPro\proxy.php" />
     <Content Include="Scripts\js-webshim\dev\shims\FlashCanvasPro\README" />
     <Content Include="Scripts\js-webshim\dev\shims\FlashCanvasPro\save.php" />
