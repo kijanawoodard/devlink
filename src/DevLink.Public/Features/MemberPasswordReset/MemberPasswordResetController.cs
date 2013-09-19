@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using AttributeRouting.Web.Mvc;
 using DevLink.Public.Models;
 using Raven.Client;
@@ -14,11 +10,13 @@ namespace DevLink.Public.Features.MemberPasswordReset
     {
 	    private readonly IDocumentSession _session;
 	    private readonly IFindMembers _members;
+	    private readonly IAuthentication _authentication;
 
-		public MemberPasswordResetController(IDocumentSession session, IFindMembers members)
+	    public MemberPasswordResetController(IDocumentSession session, IFindMembers members, IAuthentication authentication)
 		{
 			_session = session;
 			_members = members;
+			_authentication = authentication;
 		}
 
 	    [AllowAnonymous]
@@ -38,7 +36,7 @@ namespace DevLink.Public.Features.MemberPasswordReset
 				member.ResetPassword(command.Password, command.Token);
 				_session.SaveChanges();
 
-				FormsAuthentication.SetAuthCookie(member.Id, true);
+				_authentication.Login(member.Id);
 				return RedirectToAction("Index", "Welcome");
 			}
 			catch (Exception)

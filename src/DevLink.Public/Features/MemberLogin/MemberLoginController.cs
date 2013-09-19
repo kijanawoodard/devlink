@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Web.Mvc;
-using System.Web.Security;
 using AttributeRouting.Web.Mvc;
 using DevLink.Public.Models;
-using Raven.Client;
 
 namespace DevLink.Public.Features.MemberLogin
 {
     public class MemberLoginController : Controller
     {
 	    private readonly IFindMembers _members;
+	    private readonly IAuthentication _authentication;
 
-		public MemberLoginController(IFindMembers members)
+	    public MemberLoginController(IFindMembers members, IAuthentication authentication)
 		{
 			_members = members;
+			_authentication = authentication;
 		}
 
 	    [AllowAnonymous]
@@ -35,7 +35,7 @@ namespace DevLink.Public.Features.MemberLogin
 				var ok = member.VerifyPassword(command.Password);
 				if (ok)
 				{
-					FormsAuthentication.SetAuthCookie(member.Id, true);
+					_authentication.Login(member.Id);
 					return RedirectToLocal(command.ReturnUrl);			
 				}
 			}

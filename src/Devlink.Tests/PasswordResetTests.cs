@@ -13,6 +13,8 @@ namespace Devlink.Tests
 		[Test]
 		public void PasswordResetWorksProperly()
 		{
+			var authentication = new Mock<IAuthentication>();
+
 			using (var store = NewDocumentStore())
 			{
 				using(var session = store.OpenSession())
@@ -39,7 +41,7 @@ namespace Devlink.Tests
 					members.Setup(x => x.FindMemberByUserName(It.IsAny<string>()))
 					       .Returns(session.Load<Member>(Member.FormatId(command.UserName)));
 					
-					var sut = new MemberPasswordResetController(session, members.Object);
+					var sut = new MemberPasswordResetController(session, members.Object, authentication.Object);
 					sut.Post(command);
 				}
 
@@ -48,6 +50,7 @@ namespace Devlink.Tests
 					var member = session.Load<Member>(Member.FormatId("john.doe"));
 
 					Assert.IsTrue(member.VerifyPassword("a new password"));
+					authentication.Verify(x => x.Login(Member.FormatId("john.doe")), Times.Once);
 				}
 			}
 		}
