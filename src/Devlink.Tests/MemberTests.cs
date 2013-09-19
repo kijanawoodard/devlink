@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevLink.Public.Infrastructure.Crypto;
 using DevLink.Public.Models;
 using NUnit.Framework;
 
 namespace Devlink.Tests
 {
-	[TestFixture]
     public class MemberTests
     {
 		[Test]
