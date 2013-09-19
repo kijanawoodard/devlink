@@ -92,6 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InvitationAcceptanceTests.cs" />
     <Compile Include="InvitationCreationTests.cs" />
     <Compile Include="InvitationTests.cs" />
     <Compile Include="MemberTests.cs" />

@@ -14,11 +14,13 @@ namespace DevLink.Public.Features.InvitationAcceptance
     {
 	    private readonly IDocumentSession _session;
 	    private readonly IEmailNotificationService _email;
+	    private readonly IAuthentication _authentication;
 
-	    public InvitationAcceptanceController(IDocumentSession session, IEmailNotificationService email)
+	    public InvitationAcceptanceController(IDocumentSession session, IEmailNotificationService email, IAuthentication authentication)
 		{
 			_session = session;
 			_email = email;
+		    _authentication = authentication;
 		}
 
 	    [AllowAnonymous]
@@ -76,7 +78,7 @@ namespace DevLink.Public.Features.InvitationAcceptance
 				_session.Advanced.UseOptimisticConcurrency = true;
 				_session.SaveChanges();
 				
-				FormsAuthentication.SetAuthCookie(member.Id, true);
+				_authentication.Login(member.Id);
 
 				_email.SendAcceptanceNotificationToGroup(member);
 

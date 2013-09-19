@@ -56,6 +56,10 @@ namespace DevLink.Public
 			       .As<IDocumentSession>()
 			       .InstancePerLifetimeScope();
 
+			builder.Register(x => new FormsAuth())
+			       .As<IAuthentication>()
+			       .SingleInstance();
+
 			builder.Register(x => new ConfigurationManagerBasedWebConfiguration())
 			       .As<IAppConfiguration>()
 			       .SingleInstance();

@@ -229,6 +229,7 @@
     <Compile Include="Infrastructure\Crypto\ShortGuid.cs" />
     <Compile Include="Infrastructure\Crypto\System.Web.Helpers.Crypto.cs" />
     <Compile Include="Infrastructure\Raven\DocumentExtensions.cs" />
+    <Compile Include="Models\FormsAuth.cs" />
     <Compile Include="Models\Identifier.cs" />
     <Compile Include="Models\Invitation.cs" />
     <Compile Include="Models\Member.cs" />

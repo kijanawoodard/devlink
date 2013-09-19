@@ -85,7 +85,7 @@ namespace DevLink.Public.Models
 	{
 		public List<string> Invitations { get; set; }
 
-		public void AddInvite(string invitationId)
+		public void AddInvitation(string invitationId)
 		{
 			Invitations.Add(invitationId);
 		}

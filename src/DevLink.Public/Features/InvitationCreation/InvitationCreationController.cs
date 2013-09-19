@@ -48,7 +48,7 @@ namespace DevLink.Public.Features.InvitationCreation
 
 				_session.Store(invite);
 
-				loggedInMember.AddInvite(invite.Id);
+				loggedInMember.AddInvitation(invite.Id);
 
 				_session.SaveChanges();
 
