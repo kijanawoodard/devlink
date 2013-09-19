@@ -5,6 +5,7 @@ using NUnit.Framework;
 
 namespace Devlink.Tests
 {
+	[TestFixture]
     public class MemberTests
     {
 		[Test]
@@ -41,7 +42,7 @@ namespace Devlink.Tests
 
 			sut.ResetPassword("foo", "bar");
 
-			Assert.AreEqual(true, sut.VerifyPassword("foo"));
+			Assert.IsTrue(sut.VerifyPassword("foo"));
 			Assert.IsNull(sut.PasswordResetToken);
 			Assert.IsNull(sut.PasswordResetTokenExpiration);
 		}

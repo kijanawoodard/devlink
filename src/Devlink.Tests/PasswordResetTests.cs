@@ -7,6 +7,7 @@ using Raven.Tests.Helpers;
 
 namespace Devlink.Tests
 {
+	[TestFixture]
 	public class PasswordResetTests : RavenTestBase
 	{
 		[Test]
@@ -46,7 +47,7 @@ namespace Devlink.Tests
 				{
 					var member = session.Load<Member>(Member.FormatId("john.doe"));
 
-					Assert.AreEqual(true, member.VerifyPassword("a new password"));
+					Assert.IsTrue(member.VerifyPassword("a new password"));
 				}
 			}
 		}

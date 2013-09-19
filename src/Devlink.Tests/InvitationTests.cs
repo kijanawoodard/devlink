@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 namespace Devlink.Tests
 {
+	[TestFixture]
 	public class InvitationTests
 	{
 		[Test]
