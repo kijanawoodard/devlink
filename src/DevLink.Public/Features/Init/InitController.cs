@@ -106,7 +106,7 @@ namespace DevLink.Public.Features.Init
 		{
 			Map = members => from member in members
 							 from ancestor in member.Lineage
-							 let position = member.Lineage.IndexOf(ancestor) + 1
+							 let position = member.Lineage.Count - member.Lineage.IndexOf(ancestor)
 							 select new
 							 {
 								 Ancestor = ancestor,

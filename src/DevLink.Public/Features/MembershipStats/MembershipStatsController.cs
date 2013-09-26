@@ -56,7 +56,7 @@ namespace DevLink.Public.Features.MembershipStats
 					Stats = stats.FirstOrDefault(x => x.Ancestor == member.Id) ?? new MembershipStatsIndex.Result(),
 					Pending = invitations.FirstOrDefault(x => x.Voucher == member.Id).DefaultIfNull(x => x.Pending, 0),
 				})
-				.OrderBy(x => x.Stats.Level1)
+				.OrderByDescending(x => x.Stats.Level1)
 				.ThenBy(x => x.Name);
 			}
 
