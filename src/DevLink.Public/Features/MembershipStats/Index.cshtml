@@ -1,0 +1,34 @@
+﻿@model DevLink.Public.Features.MembershipStats.MembershipStatsController.IndexViewModel
+
+@{
+    ViewBag.Title = "Membership Stats";
+    ViewBag.Css = "stats";
+}
+
+<h2>membership stats.</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Pending</th>
+            <th>First</th>
+            <th>Second</th>
+            <th>Third</th>
+            <th>Total</th>
+            <th>Depth</th>
+        </tr>
+    </thead>
+    @foreach (var result in Model.Results)
+    {
+        <tr>
+            <td>@result.Name</td>
+            <td>@result.Pending</td>
+            <td>@result.Stats.Level1</td>
+            <td>@result.Stats.Level2</td>
+            <td>@result.Stats.Level3</td>
+            <td>@result.Stats.Total</td>
+            <td>@result.Stats.Position</td>
+        </tr>
+    }
+</table>    

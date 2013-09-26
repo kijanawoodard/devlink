@@ -1,0 +1,24 @@
+﻿.stats table {
+}
+
+.stats table td, table th {
+	padding: 2px 30px 2px 0;
+}
+.stats table thead {
+}
+.stats table th {
+	text-align: left;
+	text-transform: lowercase;
+	border-bottom: 1px solid #e2e2e2;
+}
+.stats table td {
+	font-size: 14px;
+	text-align: right;
+}
+.stats table td:hover {
+	background-color: #fff;
+}
+
+.stats table tr:nth-child(even) {
+	background-color: #e2e2e2;
+}

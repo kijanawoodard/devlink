@@ -82,10 +82,84 @@ namespace DevLink.Public.Features.Init
 									 member.FullName,
 									 member.Email,
 									 member.VouchedBy,
+									 member.Lineage,
 									 member.Created
 			                     };
 
 			Index(x => x.FullName, FieldIndexing.Analyzed);
+		}
+	}
+
+	public class MembershipStatsIndex : AbstractIndexCreationTask<Member, MembershipStatsIndex.Result>
+	{
+		public class Result
+		{
+			public string Ancestor { get; set; }
+			public int Position { get; set; }
+			public int Level1 { get; set; }
+			public int Level2 { get; set; }
+			public int Level3 { get; set; }
+			public int Total { get; set; }
+		}
+
+		public MembershipStatsIndex()
+		{
+			Map = members => from member in members
+							 from ancestor in member.Lineage
+							 let position = member.Lineage.IndexOf(ancestor) + 1
+							 select new
+							 {
+								 Ancestor = ancestor,
+								 Position = position,
+								 Level1 = position == 1 ? 1 : 0,
+								 Level2 = position == 2 ? 1 : 0,
+								 Level3 = position == 3 ? 1 : 0,
+								 Total = 1,
+							 };
+
+			Reduce = results => from result in results
+			                    group result by result.Ancestor
+			                    into g
+			                    select new
+			                    {
+									Ancestor = g.Key,
+									Position = g.Max(x => x.Position),
+									Level1 = g.Sum(x => x.Level1),
+									Level2 = g.Sum(x => x.Level2),
+									Level3 = g.Sum(x => x.Level3),
+									Total = g.Sum(x => x.Total)
+			                    };
+		}
+	}
+
+	public class InvitationStatsIndex : AbstractIndexCreationTask<Invitation, InvitationStatsIndex.Result>
+	{
+		public class Result
+		{
+			public string Voucher { get; set; }
+			public int Pending { get; set; }
+			public int Total { get; set; }
+		}
+
+		public InvitationStatsIndex()
+		{
+			Map = invitations => from invitation in invitations
+			                     select new
+			                     {
+				                     Voucher = invitation.VouchedBy,
+									 Pending = invitation.Status == Invitation.Statuses.Pending ? 1 : 0,
+				                     Total = 1,
+			                     };
+
+			Reduce = results => from result in results
+			                    group result by result.Voucher
+			                    into g
+			                    select new
+			                    {
+				                    Voucher = g.Key,
+				                    Pending = g.Max(x => x.Pending),
+				                    Total = g.Sum(x => x.Total)
+			                    };
 		}
 	}
 }

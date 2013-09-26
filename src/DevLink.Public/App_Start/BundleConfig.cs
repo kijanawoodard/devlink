@@ -23,7 +23,9 @@ namespace DevLink.Public
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 						"~/Scripts/js-webshim/minified/extras/modernizr-custom.js"));
 
-			bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+			bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css")
+			                                            .IncludeDirectory("~/Features", "*.css", true));
+
 			bundles.Add(new StyleBundle("~/Content/public/css").Include("~/Content/public.css")
 															   .IncludeDirectory("~/Features", "*.css", true));
 

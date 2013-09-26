@@ -219,6 +219,7 @@
     <Compile Include="Features\InvitationAcceptance\InvitationAcceptanceController.cs" />
     <Compile Include="Features\InvitationCreation\InvitationCreationController.cs" />
     <Compile Include="Features\MemberPasswordReset\MemberPasswordResetController.cs" />
+    <Compile Include="Features\MembershipStats\MembershipStatsController.cs" />
     <Compile Include="Features\Welcome\WelcomeController.cs" />
     <Compile Include="Features\MemberLogin\MemberLoginController.cs" />
     <Compile Include="Features\MemberLogout\MemberLogoutController.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Infrastructure\Crypto\CryptoHelper.cs" />
     <Compile Include="Infrastructure\Crypto\ShortGuid.cs" />
     <Compile Include="Infrastructure\Crypto\System.Web.Helpers.Crypto.cs" />
+    <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Infrastructure\Raven\DocumentExtensions.cs" />
     <Compile Include="Models\FormsAuth.cs" />
     <Compile Include="Models\Identifier.cs" />
@@ -295,6 +297,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Features\MemberLogin\styles.css" />
     <Content Include="Features\Home\styles.css" />
+    <Content Include="Features\MembershipStats\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Features\Welcome\Index.cshtml" />
     <Content Include="Features\Web.config" />
@@ -308,6 +311,7 @@
     <Content Include="Features\InvitationCreation\Index.cshtml" />
     <Content Include="Features\InvitationCreation\Ok.cshtml" />
     <Content Include="Features\InvitationAcceptance\Index.cshtml" />
+    <Content Include="Features\MembershipStats\Index.cshtml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
