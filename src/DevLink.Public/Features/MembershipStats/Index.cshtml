@@ -18,17 +18,50 @@
             <th>Total</th>
             <th>Depth</th>
         </tr>
-    </thead>
-    @foreach (var result in Model.Results)
-    {
-        <tr>
-            <td>@result.Name</td>
-            <td>@result.Pending</td>
-            <td>@result.Stats.Level1</td>
-            <td>@result.Stats.Level2</td>
-            <td>@result.Stats.Level3</td>
-            <td>@result.Stats.Total</td>
-            <td>@result.Stats.Position</td>
+        <tr class="scrunch">
+            <th>Name</th>
+            <th>???</th>
+            <th>1st</th>
+            <th>2nd</th>
+            <th>3rd</th>
+            <th>Tot</th>
+            <th>Dep</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var result in Model.Results)
+        {
+            <tr>
+                <td>@result.Name</td>
+                <td>@result.Pending</td>
+                <td>@result.Stats.Level1</td>
+                <td>@result.Stats.Level2</td>
+                <td>@result.Stats.Level3</td>
+                <td>@result.Stats.Total</td>
+                <td>@result.Stats.Position</td>
+            </tr>
+        }
+    </tbody>
 </table>    
+
+<div class="legend">
+    <ul>
+        <li><label>Pending:</label> pending invitations.</li>
+        <li><label>First:</label> directly vouched.</li>
+        <li><label>Second:</label> invited by direct.</li>
+        <li><label>Third:</label> invited by 2nd level.</li>
+        <li><label>Total:</label> total members all levels.</li>
+        <li><label>Depth:</label> furthest level.</li>
+    </ul>
+</div>
+
+<div class="legend scrunch">
+    <ul>
+        <li><label>???</label> pending invitations.</li>
+        <li><label>1st</label> directly vouched.</li>
+        <li><label>2nd</label> invited by direct.</li>
+        <li><label>3rd</label> invited by 2nd level.</li>
+        <li><label>Tot</label> total members all levels.</li>
+        <li><label>Dep</label> furthest level.</li>
+    </ul>
+</div>

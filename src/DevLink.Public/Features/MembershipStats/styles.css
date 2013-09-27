@@ -4,21 +4,61 @@
 .stats table td, table th {
 	padding: 2px 30px 2px 0;
 }
+
 .stats table thead {
-}
-.stats table th {
 	text-align: left;
 	text-transform: lowercase;
 	border-bottom: 1px solid #e2e2e2;
 }
 .stats table td {
-	font-size: 14px;
 	text-align: right;
 }
 .stats table td:hover {
 	background-color: #fff;
 }
 
-.stats table tr:nth-child(even) {
+.stats table tbody tr:nth-child(even) {
 	background-color: #e2e2e2;
+}
+
+.stats .legend ul { list-style-type: none;padding-left: 0;}
+.stats .legend ul li { margin: 0;}
+.stats .legend label { display: inline; }
+
+.stats .legend.scrunch { display: none; }
+.stats table .scrunch {line-height: 0; visibility: hidden; }
+
+@media only screen and (max-width: 701px) {
+	
+	.stats table td, table th {
+		padding: 1px 10px 1px 0;
+	}	
+}
+
+@media only screen and (max-width: 568px) {
+	
+	.stats table td, table th {
+		padding: 1px 5px 1px 0;
+		font-size: .8em;
+	}	
+}
+
+@media only screen and (max-width: 381px) {
+	.stats table { }
+	
+	.stats .legend { display: none; }
+	.stats thead tr { line-height: 0; visibility: hidden;}
+
+	.stats .legend.scrunch { display: block;}
+	.stats table tr.scrunch {line-height: initial; visibility: visible; }
+
+	.stats table td, table th {
+		padding: 1px 1px 1px 0;
+		font-size: .8em;
+		max-width: 30px;
+	}
+
+	.stats table td:first-child, table th:first-child {
+		max-width: initial;
+	}
 }
