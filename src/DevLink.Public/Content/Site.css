@@ -140,29 +140,28 @@ footer {
 
 /* login
 ----------------------------------------------------------*/
-#login { text-transform: lowercase; }
+#login { text-transform: lowercase;display: inline-block;}
 #login a { padding: 0; }
 
 /* menu
 ----------------------------------------------------------*/
+.main-menu { display: inline-block;}
 ul#menu {
-    font-size: 1.3em;
-    font-weight: 600;
-    margin: 0 0 5px;
+    margin: 0;
     padding: 0;
     text-align: right;
+	text-transform: lowercase;
+	display: inline-block;
 }
 
 ul#menu li {
 	display: inline;
 	list-style: none;
-	padding-left: 15px;
+	padding-left: 0;
 }
 
 ul#menu li a {
 	background: none;
-	color: #999;
-	text-decoration: none;
 }
 
 ul#menu li a:hover {
