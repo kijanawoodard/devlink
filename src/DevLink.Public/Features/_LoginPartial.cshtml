@@ -1,18 +1,8 @@
-﻿@using System.Web.Http
-@using DevLink.Public.Models
-@if (Request.IsAuthenticated) {
-    <text>
-        <span class="greeting">hello @(DependencyResolver.Current.GetService<IFindMembers>().FindLoggedInMember().FullName).</span>
-@*    @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" }).*@
-        @using (Html.BeginForm("Post", "MemberLogout", FormMethod.Post, new { id = "logoutForm" }))
-        {
-            @Html.AntiForgeryToken()
-            <span><a href="javascript:document.getElementById('logoutForm').submit()">log off</a>.</span>
-        }
-    </text>
-} else {
-    @*<ul>
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>*@
+﻿@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("Post", "MemberLogout", FormMethod.Post, new {id = "logoutForm"}))
+    {
+        @Html.AntiForgeryToken()
+        <span><a href="javascript:document.getElementById('logoutForm').submit()">log off</a>.</span>
+    }
 }

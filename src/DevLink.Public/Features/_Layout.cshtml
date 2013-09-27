@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using DevLink.Public.Models
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -15,6 +16,10 @@
                     <p class="site-title">@Html.ActionLink("devlink", "Index", "Welcome")</p>
                 </div>
                 <div class="float-right">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span class="greeting">hello @(DependencyResolver.Current.GetService<IFindMembers>().FindLoggedInMember().FullName).</span>                     
+                    }
                     <section id="login">
                         @Html.Partial("_LoginPartial")
                     </section>
