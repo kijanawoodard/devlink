@@ -23,7 +23,7 @@ else
     <label>@Model.UserName</label>
     
     <label>p:</label>
-    <input type="password" name="password" autofocus required />
+    <input type="password" name="password" pattern=".{6,}" title="6 characters minimum" autofocus required />
     
     <input type="submit" value="enter" />
 }
